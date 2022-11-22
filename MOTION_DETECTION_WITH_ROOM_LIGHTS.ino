@@ -48,11 +48,15 @@ void loop() {
   if(counter%2==0)
   {
     digitalWrite(light,HIGH);
-   
- 
+    Servo1.write(180);
+    delay(d);
+    Servo1.write(0);
   }
   else
   {
     digitalWrite(light,LOW);
+    Servo2.write(180);
+    delay(d);
+    Servo2.write(0);
   }
 }
