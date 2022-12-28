@@ -4,12 +4,16 @@
 #define trig 3
 #define echo 2
 #define light 6
+
 int d = 500;
 int previous=0;
 int current=0;
 int counter=1;
+int distance;
+
 Servo Servo1;
 Servo Servo2;
+
 void setup() {
   pinMode(trig,OUTPUT);
   pinMode(echo,INPUT);
@@ -22,13 +26,15 @@ void setup() {
 }
 
 void loop() {
+}
   digitalWrite(trig,LOW);
   delay(2);
   digitalWrite(trig,HIGH);
   delay(10);
   digitalWrite(trig,LOW);
   double duration=pulseIn(echo,HIGH);
-  int distance = 0.034 * duration/2;
+  distance = 0.034 * duration;
+  distance = distance/2;
   Serial.println(distance);
 
   if(distance<100)
@@ -47,16 +53,25 @@ void loop() {
   previous=current;
   if(counter%2==0)
   {
+   lightON();
+  }
+  else
+  {
+   lightOFF();
+  }
+
+void lightON()
+{
     digitalWrite(light,HIGH);
     Servo1.write(180);
     delay(d);
     Servo1.write(0);
-  }
-  else
-  {
-    digitalWrite(light,LOW);
+}
+void lightOFF()
+{
+   digitalWrite(light,LOW);
     Servo2.write(180);
     delay(d);
     Servo2.write(0);
-  }
 }
+
