@@ -5,7 +5,7 @@
 #define echo 2
 #define light 6
 
-int d = 500;
+int d = 3000;
 int previous=0;
 int current=0;
 int counter=1;
@@ -60,15 +60,14 @@ void loop() {
    lightOFF();
   }
 
-void lightON()
-{
+void lightON() {
     digitalWrite(light,HIGH);
     Servo1.write(180);
     delay(d);
     Servo1.write(0);
 }
-void lightOFF()
-{
+
+void lightOFF() {
    digitalWrite(light,LOW);
     Servo2.write(180);
     delay(d);
