@@ -68,7 +68,7 @@ void lightON() {
 }
 
 void lightOFF() {
-   digitalWrite(light,LOW);
+    digitalWrite(light,LOW);
     Servo2.write(180);
     delay(d);
     Servo2.write(0);
